@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prueba Face Descriptor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="./js/face-api.min.js"></script>
+</head>
+<body style="background:#111; color:#eee; font-family:sans-serif; padding:20px;">
+  <div class="header">
+    <h1>Prueba de descriptor facial</h1>
+  </div>
+  <div class="content">
+    <div class="Formulario">
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required />
+            <br> <br> 
+            <label for="nombre">Apellido Materno:</label>
+            <input type="text" id="ApellidoMaterno" name="nombre" required />
+            <br> <br> 
+            <label for="nombre">Apellido Paterno:</label>
+            <input type="text" id="ApellidoPaterno" name="nombre" required />
+            <br> <br> 
+            <label for="nombre">Apodo:</label>
+            <input type="text" id="Apodo" name="nombre" required />
+            <br> <br> 
+            <label for="edad">Fecha de nacimiento:</label>
+            <input type="date" id="edad" name="edad" required />
+            <br> <br> 
+            <input type="submit" value="Enviar" />
+        </form>
+    </div>
+    <div class="imageLoad">  
+        <input type="file" id="fileInput" accept="image/*" />
+        <p id="file">Carga una imagen con rostro</p>
+        <p id="status">Esperando carga de modelos…</p>
+        <img id="preview" alt="preview" style="max-width:300px; margin-top:10px; display:block;" />
+    </div>
+  </div>
+    
+ 
+  <script src="./js/descriptor.js"></script>
+</body>
+</html>

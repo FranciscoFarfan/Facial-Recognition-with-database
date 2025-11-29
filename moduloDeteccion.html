@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prueba Face Descriptor</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            aura: {
+              cyan: '#06b6d4',
+              blue: '#3b82f6',
+              dark: '#020617'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+      color: white;
+    }
+
+    .glass-card {
+      background: rgba(2, 6, 23, 0.5);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+      transition: 0.3s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      box-shadow: 0 8px 35px rgba(6, 182, 212, 0.25);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="w-full p-6 flex justify-between items-center glass-card rounded-b-2xl mb-10">
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-aura-cyan to-aura-blue flex items-center justify-center shadow-lg">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      </div>
+
+      <div>
+        <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-aura-cyan to-aura-blue">
+          Prueba de Descriptor Facial
+        </h1>
+        <p class="text-xs text-slate-400">Captura de datos + generación de vector</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO (solo tus dos divs) -->
+  <main class="container mx-auto px-4 flex flex-col md:flex-row gap-8 justify-center items-start pb-16">
+
+    <!-- FORMULARIO -->
+    <div class="glass-card p-6 rounded-2xl w-full md:w-1/2">
+      <!-- Aquí pegas tu div del formulario -->
+      <div class="Formulario">
+          <form>
+              <label for="nombre">Nombre:</label>
+              <input type="text" id="nombre" required class="block w-full bg-slate-800/50 mt-1 px-3 py-2 rounded-lg" />
+              <br>
+              <label for="ApellidoMaterno">Apellido Materno:</label>
+              <input type="text" id="ApellidoMaterno" required class="block w-full bg-slate-800/50 mt-1 px-3 py-2 rounded-lg" />
+              <br>
+              <label for="ApellidoPaterno">Apellido Paterno:</label>
+              <input type="text" id="ApellidoPaterno" required class="block w-full bg-slate-800/50 mt-1 px-3 py-2 rounded-lg" />
+              <br>
+              <label for="Apodo">Apodo:</label>
+              <input type="text" id="Apodo" required class="block w-full bg-slate-800/50 mt-1 px-3 py-2 rounded-lg" />
+              <br>
+              <label for="edad">Fecha de nacimiento:</label>
+              <input type="date" id="edad" required class="block w-full bg-slate-800/50 mt-1 px-3 py-2 rounded-lg" />
+              <br>
+              <input type="submit" value="Enviar"
+                     class="mt-4 w-full py-2 bg-gradient-to-r from-aura-cyan to-aura-blue rounded-lg font-bold hover:opacity-90 transition" />
+          </form>
+      </div>
+    </div>
+
+    <!-- CARGA DE IMAGEN -->
+    <div class="glass-card p-6 rounded-2xl w-full md:w-1/2 text-center">
+      <!-- Aquí pegas tu div de imagen -->
+      <div class="imageLoad">
+        <input type="file" id="fileInput" accept="image/*" class="mb-4" />
+        <p id="file" class="text-slate-300">Carga una imagen con rostro</p>
+        <p id="status" class="text-slate-500">Esperando carga de modelos…</p>
+        <img id="preview" alt="preview" class="mt-4 mx-auto max-w-xs rounded-lg shadow-lg" />
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Tu script -->
+  <script src="./js/face-api.min.js"></script>
+  <script src="./js/descriptor.js"></script>
+
+</body>
+</html>
